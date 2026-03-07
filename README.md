@@ -25,9 +25,7 @@ In a world where data is increasingly analyzed by AI, how do we protect sensitiv
 
 ## 🎥 Demo Video
 
-[👉 **Click here to watch the full Loom demo video!** ](INSERT_GOOGLE_DRIVE_OR_LOOM_LINK_HERE)
-
-*(Note for user: Replace the link above before final submission!)*
+[👉 **Click here to watch the full Loom demo video!** ](https://www.loom.com/share/7033145415e34c30a1874ceea81b508c)
 
 ---
 
