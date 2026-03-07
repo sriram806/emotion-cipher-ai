@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, Unlock, AlertCircle, Fingerprint, ScanEye, Sparkles, Activity } from "lucide-react";
 
@@ -45,6 +45,7 @@ const emotionEmojis: Record<string, string> = {
 };
 
 export default function EncryptionConsole() {
+    const inputTextAreaRef = useRef<HTMLTextAreaElement>(null);
     const [inputText, setInputText] = useState("");
     const [encryptedText, setEncryptedText] = useState("");
     const [detectedEmotion, setDetectedEmotion] = useState("");
@@ -55,6 +56,18 @@ export default function EncryptionConsole() {
     const [mode, setMode] = useState<"input" | "encrypted" | "decrypted">("input");
 
     const BACKEND_URL = "http://localhost:8000";
+
+    const adjustInputHeight = () => {
+        const textarea = inputTextAreaRef.current;
+        if (!textarea) return;
+
+        textarea.style.height = "auto";
+        textarea.style.height = `${textarea.scrollHeight}px`;
+    };
+
+    useEffect(() => {
+        adjustInputHeight();
+    }, [inputText]);
 
     const handleEncrypt = async () => {
         if (!inputText.trim()) return;
@@ -188,10 +201,11 @@ export default function EncryptionConsole() {
                             <div className="relative w-full bg-white rounded-3xl p-2 flex flex-col sm:flex-row items-end sm:items-center transition-all duration-300 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.08)] ring-1 ring-zinc-200 group-focus-within:ring-zinc-300 group-focus-within:shadow-[0_8px_30px_-5px_rgba(0,0,0,0.12)]">
 
                                 <textarea
+                                    ref={inputTextAreaRef}
                                     value={inputText}
                                     onChange={(e) => setInputText(e.target.value)}
                                     placeholder="Message EmotionCipher..."
-                                    className="w-full bg-transparent border-none px-6 py-4 sm:py-5 text-lg font-normal text-zinc-900 placeholder:text-zinc-500 focus:outline-none resize-none min-h-[60px] max-h-[200px] overflow-y-auto sm:min-h-[auto] rounded-3xl"
+                                    className="w-full bg-transparent border-none px-6 py-4 sm:py-5 text-lg font-normal text-zinc-900 placeholder:text-zinc-500 focus:outline-none resize-none min-h-15 overflow-hidden hide-scrollbar sm:min-h-auto rounded-3xl"
                                     rows={1}
                                     autoFocus
                                     onKeyDown={(e) => {
@@ -206,7 +220,7 @@ export default function EncryptionConsole() {
                                     <button
                                         onClick={handleEncrypt}
                                         disabled={loading || !inputText.trim()}
-                                        className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-zinc-900 text-white flex items-center justify-center hover:bg-zinc-700 active:scale-95 transition-all duration-200 disabled:opacity-30 disabled:hover:bg-zinc-900 disabled:active:scale-100 disabled:cursor-not-allowed flex-shrink-0"
+                                        className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-zinc-900 text-white flex items-center justify-center hover:bg-zinc-700 active:scale-95 transition-all duration-200 disabled:opacity-30 disabled:hover:bg-zinc-900 disabled:active:scale-100 disabled:cursor-not-allowed shrink-0"
                                         title="Send message"
                                     >
                                         {loading ? (
