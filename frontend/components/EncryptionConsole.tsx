@@ -89,7 +89,7 @@ export default function EncryptionConsole() {
             setDetectedEmotion(data.emotion);
             setMode("encrypted");
         } catch (err) {
-            setError("Failed to encrypt message. Is backend running?");
+            setError("Failed to encrypt message. server is down?");
         } finally {
             setLoading(false);
         }
