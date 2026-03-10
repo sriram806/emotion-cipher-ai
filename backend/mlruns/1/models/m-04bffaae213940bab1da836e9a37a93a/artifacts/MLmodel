@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/boddu/Desktop/Hacktons/Emotion-Aware Encryption-UsaidTalks/backend/mlruns/1/models/m-04bffaae213940bab1da836e9a37a93a/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.12
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.10.1
+model_id: m-04bffaae213940bab1da836e9a37a93a
+model_size_bytes: 14715418
+model_uuid: m-04bffaae213940bab1da836e9a37a93a
+prompts: null
+run_id: ae857520fd3d4b1082ea3404c8e56477
+utc_time_created: '2026-03-10 09:42:50.659712'

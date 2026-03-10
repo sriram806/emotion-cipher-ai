@@ -4,3 +4,9 @@ transformers
 torch
 cryptography
 python-multipart
+scikit-learn
+nltk
+joblib
+pandas
+mlflow
+loguru

@@ -55,7 +55,7 @@ export default function EncryptionConsole() {
     const [error, setError] = useState("");
     const [mode, setMode] = useState<"input" | "encrypted" | "decrypted">("input");
 
-    const BACKEND_URL = "http://localhost:8000";
+    const BACKEND_URL = "http://127.0.0.1:8000";
 
     const adjustInputHeight = () => {
         const textarea = inputTextAreaRef.current;

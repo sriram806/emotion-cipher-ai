@@ -15,19 +15,69 @@ export default function AboutProject() {
 
         if (!containerRef.current) return;
 
-        // Reveal the elements with a nice stagger and spring easing
+        // 1. Text Statement Stagger
         gsap.fromTo(
-            elementsRef.current,
-            { y: 60, opacity: 0 },
+            elementsRef.current[0],
+            { y: 50, opacity: 0 },
             {
                 y: 0,
                 opacity: 1,
                 duration: 1,
-                stagger: 0.15,
-                ease: "back.out(1.4)",
+                ease: "power3.out",
                 scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top 80%", // Trigger when top of container hits 80% down the viewport
+                    trigger: elementsRef.current[0],
+                    start: "top 85%",
+                }
+            }
+        );
+
+        // 2. Left Tech Stack Card (Frontend) - Slide from left
+        gsap.fromTo(
+            elementsRef.current[1],
+            { x: -80, opacity: 0, rotationY: -15 },
+            {
+                x: 0,
+                opacity: 1,
+                rotationY: 0,
+                duration: 1.2,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: elementsRef.current[1],
+                    start: "top 80%",
+                }
+            }
+        );
+
+        // 3. Right Tech Stack Card (Backend) - Slide from right
+        gsap.fromTo(
+            elementsRef.current[2],
+            { x: 80, opacity: 0, rotationY: 15 },
+            {
+                x: 0,
+                opacity: 1,
+                rotationY: 0,
+                duration: 1.2,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: elementsRef.current[2],
+                    start: "top 80%",
+                }
+            }
+        );
+
+        // 4. Developer Profile - Scale up spring
+        gsap.fromTo(
+            elementsRef.current[3],
+            { scale: 0.8, opacity: 0, y: 40 },
+            {
+                scale: 1,
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "elastic.out(1, 0.5)",
+                scrollTrigger: {
+                    trigger: elementsRef.current[3],
+                    start: "top 85%",
                 }
             }
         );
