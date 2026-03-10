@@ -5,12 +5,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimatedBackgroundObjects from "@/components/AnimatedBackgroundObjects";
 import ThreeDModel from "@/components/ThreeDModel";
+import Link from "next/link";
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-import { Sparkles } from "lucide-react";
+import { ArrowRight, LockKeyhole, ShieldCheck, Sparkles } from "lucide-react";
 
 export default function Home() {
 
@@ -93,83 +94,55 @@ export default function Home() {
 
         <section className="w-full px-6 flex justify-center">
 
-          <div className="max-w-7xl w-full flex flex-col items-start">
+          <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
             <div
               ref={titleRef}
-              className="w-full max-w-xl"
+              className="w-full"
             >
 
               {/* Badge */}
 
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 text-sky-600 border border-sky-400/30 text-sm font-semibold mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 text-sky-700 border border-sky-300/60 shadow-sm text-sm font-semibold mb-6 backdrop-blur">
                 <Sparkles className="w-4 h-4" />
                 Next-Gen AI Security
               </div>
 
 
-              {/* MODEL UNDER BADGE */}
-
-              <div
-                ref={modelRef}
-                className="relative w-full h-[260px] sm:h-[320px] md:h-[380px] mb-6 flex items-center justify-center"
-              >
-
-                {/* Glow */}
-
-                <div className="absolute w-[240px] sm:w-[300px] md:w-[360px]
-                h-[240px] sm:h-[300px] md:h-[360px]
-                bg-sky-300/30 blur-[110px] rounded-full" />
-
-                {/* Model */}
-
-                <div className="absolute inset-0 scale-[0.95] -translate-x-6 md:-translate-x-10">
-                  <ThreeDModel />
-                </div>
-
-                {/* Bottom line */}
-
-                <div className="absolute bottom-2 w-[70%] h-[3px]
-                bg-gradient-to-r from-transparent via-sky-400 to-transparent
-                blur-sm opacity-70" />
-
-              </div>
-
-
               {/* TITLE */}
 
-              <h1 className="text-3xl md:text-4xl font-extrabold leading-tight mb-4">
-
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight mb-5 text-zinc-900">
                 Encryption Guided by
-
-                <span className="block text-transparent bg-clip-text text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500">
-                  Emotion
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-indigo-500 to-fuchsia-500">
+                  Human Emotion
                 </span>
-
               </h1>
 
 
               {/* DESCRIPTION */}
 
-              <p className="text-zinc-600 text-sm md:text-base leading-relaxed mb-6">
-                EmotionCipher introduces intelligent encryption where emotional
-                context becomes part of the security model. By combining NLP
-                sentiment detection with AES-256 encryption, communication
-                becomes adaptive, secure and context-aware.
+              <p className="text-zinc-600 text-base md:text-lg leading-relaxed max-w-xl mb-7">
+                EmotionCipher blends sentiment intelligence with AES-256 cryptography,
+                creating security that adapts to emotional context without sacrificing
+                speed, privacy, or reliability.
               </p>
 
 
               {/* FEATURES */}
 
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-3 mb-8">
 
-                <li className="flex items-start gap-3 text-sm text-zinc-700">
-                  <span className="mt-1 w-2 h-2 rounded-full bg-sky-500" />
+                <li className="flex items-center gap-3 text-sm md:text-base text-zinc-700">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-300/50 text-sky-600">
+                    <ShieldCheck className="w-4 h-4" />
+                  </span>
                   Emotion-aware contextual encryption
                 </li>
 
-                <li className="flex items-start gap-3 text-sm text-zinc-700">
-                  <span className="mt-1 w-2 h-2 rounded-full bg-purple-500" />
+                <li className="flex items-center gap-3 text-sm md:text-base text-zinc-700">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-300/50 text-indigo-600">
+                    <LockKeyhole className="w-4 h-4" />
+                  </span>
                   Adaptive AES-256 encryption logic
                 </li>
 
@@ -180,15 +153,40 @@ export default function Home() {
 
               <div className="flex gap-4 flex-wrap">
 
-                <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold shadow hover:scale-105 transition">
+                <Link
+                  href="/"
+                  className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold shadow-lg shadow-sky-500/25 hover:shadow-indigo-500/30 transition-all duration-300 hover:-translate-y-0.5"
+                >
                   Try Encryption
-                </button>
+                </Link>
 
-                <button className="px-6 py-3 rounded-xl border border-zinc-300 hover:border-sky-400 text-zinc-700 hover:text-sky-600 transition">
+                <Link
+                  href="/tech"
+                  className="px-6 py-3 rounded-xl border border-zinc-300 bg-white/70 backdrop-blur text-zinc-700 hover:border-sky-400 hover:text-sky-700 hover:bg-white transition-all duration-300"
+                >
                   Learn More
-                </button>
+                </Link>
 
               </div>
+
+            </div>
+
+
+            {/* MODEL PANEL */}
+
+            <div
+              ref={modelRef}
+              className="relative w-full h-[320px] sm:h-[380px] md:h-[430px] rounded-3xl bg-white/55 border border-white/70 shadow-[0_24px_80px_-30px_rgba(30,64,175,0.45)] backdrop-blur-xl overflow-hidden"
+            >
+
+              <div className="absolute -top-10 -left-8 w-44 h-44 rounded-full bg-sky-300/40 blur-3xl" />
+              <div className="absolute -bottom-12 -right-8 w-56 h-56 rounded-full bg-indigo-300/35 blur-3xl" />
+
+              <div className="absolute inset-0 scale-[1] sm:scale-[0.94] -translate-x-2 sm:-translate-x-4">
+                <ThreeDModel />
+              </div>
+
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[72%] h-[3px] bg-gradient-to-r from-transparent via-sky-400 to-transparent blur-sm opacity-80" />
 
             </div>
 

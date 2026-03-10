@@ -77,7 +77,7 @@ export default function Header() {
     }, { scope: headerRef });
 
     return (
-        <div className={`w-full fixed top-0 left-0 z-50 flex justify-center px-3 sm:px-4 transition-all duration-300 ${hideHeaderOnModel ? "opacity-0 -translate-y-6 pointer-events-none" : "opacity-100 translate-y-0"}`}>
+        <div className={`w-full fixed top-8 left-0 z-50 flex justify-center px-3 sm:px-4 transition-all duration-300 ${hideHeaderOnModel ? "opacity-0 -translate-y-6 pointer-events-none" : "opacity-100 translate-y-0"}`}>
             <header
                 ref={headerRef}
             className={`flex justify-between items-center px-6 py-4 border bg-white/20 backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isScrolled
